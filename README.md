@@ -1,10 +1,12 @@
-# gatsby-source-firestore
+# gatsby-source-firestore [![npm version](https://badge.fury.io/js/gatsby-source-firestore.svg)](https://badge.fury.io/js/gatsby-source-firestore)
+
 Gatsby source plugin for building websites using the Firestore as a data source.
 
 # Usage
 1. Get a private key for your Firebase project.
 2. Put that private key somewhere in your Gatsby project.
-3. Configure `gatsby-config.js`
+3. `$ yarn add gatsby-source-firebase`
+4. Configure `gatsby-config.js`
 
 ```javascript
 module.exports = {
@@ -40,7 +42,7 @@ module.exports = {
 
 ```
 
-4. To query
+5. To query
 ```graphql
 {
   allBooks {
