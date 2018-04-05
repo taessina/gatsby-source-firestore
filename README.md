@@ -5,7 +5,7 @@ Gatsby source plugin for building websites using the Firestore as a data source.
 # Usage
 1. Get a private key for your Firebase project.
 2. Put that private key somewhere in your Gatsby project.
-3. `$ yarn add gatsby-source-firebase`
+3. `$ yarn add gatsby-source-firestore`
 4. Configure `gatsby-config.js`
 
 ```javascript
