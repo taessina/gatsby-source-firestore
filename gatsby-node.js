@@ -20,10 +20,10 @@ exports.sourceNodes = async (
     async ({ collection, type, populate, map = node => node }) => {
       const snapshot = await db.collection(collection).get();
       for (let doc of snapshot.docs) {
-        const contentDigest = getDigest(doc.id);
+        const contentDigest = getDigest(`id_${doc.id}`);
         const node = createNode(
           Object.assign({}, map(doc.data()), {
-            id: doc.id,
+            id: `id_${doc.id}`,
             parent: null,
             children: [],
             internal: {
