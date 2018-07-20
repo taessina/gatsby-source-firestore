@@ -1,3 +1,4 @@
+const report = require('gatsby-cli/lib/reporter');
 const firebase = require('firebase-admin');
 const crypto = require('crypto');
 
@@ -11,7 +12,15 @@ exports.sourceNodes = async (
   { boundActionCreators },
   { types, credential }
 ) => {
-  firebase.initializeApp({ credential: firebase.credential.cert(credential) });
+
+  try{
+    firebase.initializeApp({ credential: firebase.credential.cert(credential) });
+  } catch (e) {
+    report.warn('Could not initialize Firebase. Please check `credential` property in gatsby-config.js');
+    report.warn(e);
+    return;
+  }
+
   const db = firebase.firestore();
 
   const { createNode, createNodeField } = boundActionCreators;
