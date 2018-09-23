@@ -13,7 +13,7 @@ exports.sourceNodes = async (
   { types, credential }
 ) => {
 
-  try{
+  try {
     firebase.initializeApp({ credential: firebase.credential.cert(credential) });
   } catch (e) {
     report.warn('Could not initialize Firebase. Please check `credential` property in gatsby-config.js');
@@ -22,6 +22,15 @@ exports.sourceNodes = async (
   }
 
   const db = firebase.firestore();
+
+  try {
+    // To hide the Firestore timestamp warning
+    const settings = { timestampsInSnapshots: true };
+    db.settings(settings);
+  } catch (e) {
+    console.log(`ERROR on update the db settings`)
+    console.error(e)
+  }
 
   const { createNode, createNodeField } = boundActionCreators;
 
