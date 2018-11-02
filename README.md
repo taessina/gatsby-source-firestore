@@ -3,8 +3,8 @@
 Gatsby source plugin for building websites using the Firestore as a data source.
 
 # Usage
-1. Get a private key for your Firebase project.
-2. Put that private key somewhere in your Gatsby project.
+1. First you need to donwload a Private Key from firebase for privileged environments, find out how to get it here: https://firebase.google.com/docs/admin/setup (or click the settings gear > Service accounts tab > Generate New Private Key button at the bottom)
+2. Put that private key (json file) somewhere in your Gatsby project.
 3. `$ yarn add gatsby-source-firestore`
 4. Configure `gatsby-config.js`
 
@@ -41,6 +41,7 @@ module.exports = {
 };
 
 ```
+Note that you will need to have books and authors in firestore matching this schema before gatsby can query correctly. e.g books__NODE on author needs to be an array with "books" as a key of reference types to book documents.
 
 5. To query
 ```graphql
