@@ -13,8 +13,8 @@ exports.sourceNodes = async (
   { types, credential }
 ) => {
 
-  try{
-    if (!firebase.apps.length){
+  try {
+    if (firebase.apps || !firebase.apps.length) {
       firebase.initializeApp({ credential: firebase.credential.cert(credential) });
     }
   } catch (e) {
