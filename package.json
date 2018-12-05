@@ -17,10 +17,15 @@
     "gatsby-node.js",
     "README.md"
   ],
+  "scripts": {
+    "lint": "prettier --write gatsby-node.js"
+  },
   "dependencies": {
     "firebase-admin": "^6.3.0",
     "gatsby-cli": "^2.4.6"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "prettier": "^1.15.3"
+  },
   "license": "MIT"
 }
