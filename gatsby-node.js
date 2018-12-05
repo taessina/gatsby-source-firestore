@@ -12,27 +12,32 @@ exports.sourceNodes = async (
   { boundActionCreators },
   { types, credential }
 ) => {
-
   try {
     if (firebase.apps || !firebase.apps.length) {
-      firebase.initializeApp({ credential: firebase.credential.cert(credential) });
+      firebase.initializeApp({
+        credential: firebase.credential.cert(credential),
+      });
     }
   } catch (e) {
-    report.warn('Could not initialize Firebase. Please check `credential` property in gatsby-config.js');
+    report.warn(
+      'Could not initialize Firebase. Please check `credential` property in gatsby-config.js'
+    );
     report.warn(e);
     return;
   }
-
   const db = firebase.firestore();
+  db.settings({
+    timestampsInSnapshots: true,
+  });
 
-  const { createNode, createNodeField } = boundActionCreators;
+  const { createNode } = boundActionCreators;
 
   const promises = types.map(
-    async ({ collection, type, populate, map = node => node }) => {
+    async ({ collection, type, map = node => node }) => {
       const snapshot = await db.collection(collection).get();
       for (let doc of snapshot.docs) {
         const contentDigest = getDigest(doc.id);
-        const node = createNode(
+        createNode(
           Object.assign({}, map(doc.data()), {
             id: doc.id,
             parent: null,
@@ -43,13 +48,10 @@ exports.sourceNodes = async (
             },
           })
         );
-
         Promise.resolve();
       }
     }
   );
-
   await Promise.all(promises);
-
   return;
 };
