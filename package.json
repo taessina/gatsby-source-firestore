@@ -1,23 +1,26 @@
 {
   "name": "gatsby-source-firestore",
-  "version": "1.0.3",
-  "description": "Gatsby source plugin for building websites using the Firestore as a data source.",
-  "main": "gatsby-node.js",
-  "repository": "github:taessina/gatsby-source-firestore",
+  "description": "Gatsby source plugin for building websites using the Firestore as a data source",
+  "version": "1.0.4",
   "author": "Yao Bin Then <alvinthen890703@gmail.com>",
-  "license": "MIT",
-  "dependencies": {
-    "firebase-admin": "^5.8.1",
-    "gatsby-cli": "^1.1.58"
-  },
+  "repository": "https://github.com/taessina/gatsby-source-firestore",
+  "keywords": [
+    "firebase",
+    "firestore",
+    "gatsby-plugin",
+    "gatsby-source-plugin",
+    "gatsby-source",
+    "gatsby"
+  ],
+  "main": "gatsby-node.js",
   "files": [
     "gatsby-node.js",
     "README.md"
   ],
-  "keywords": [
-    "gatsby",
-    "gatsby-plugin",
-    "gatsby-source-plugin",
-    "firebase"
-  ]
+  "dependencies": {
+    "firebase-admin": "^6.3.0",
+    "gatsby-cli": "^2.4.6"
+  },
+  "devDependencies": {},
+  "license": "MIT"
 }
