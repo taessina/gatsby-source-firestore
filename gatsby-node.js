@@ -12,8 +12,11 @@ exports.sourceNodes = async (
   { boundActionCreators },
   { types, credential }
 ) => {
+
   try {
-    firebase.initializeApp({ credential: firebase.credential.cert(credential) })
+    if (firebase.apps || !firebase.apps.length) {
+      firebase.initializeApp({ credential: firebase.credential.cert(credential) });
+    }
   } catch (e) {
     report.warn(
       'Could not initialize Firebase. Please check `credential` property in gatsby-config.js'
