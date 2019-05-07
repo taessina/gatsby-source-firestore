@@ -30,7 +30,18 @@ as a data source
         {
           resolve: `gatsby-source-firestore`,
           options: {
+            // credential or appConfig
             credential: require(`./credentials.json`),
+            appConfig: {
+              apiKey: "api-key",
+              authDomain: "project-id.firebaseapp.com",
+              databaseURL: "https://project-id.firebaseio.com",
+              projectId: "project-id",
+              storageBucket: "project-id.appspot.com",
+              messagingSenderId: "sender-id",
+              appID: "app-id",
+
+            },
             types: [
               {
                 type: `Book`,
