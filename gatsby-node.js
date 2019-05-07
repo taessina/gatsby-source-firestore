@@ -10,13 +10,12 @@ const getDigest = id =>
 
 exports.sourceNodes = async (
   { boundActionCreators },
-  { types, credential }
+  { types, credential, appConfig }
 ) => {
   try {
     if (firebase.apps || !firebase.apps.length) {
-      firebase.initializeApp({
-        credential: firebase.credential.cert(credential),
-      });
+      const cfg = appConfig ? appConfig : {credential: firebase.credential.cert(credential)}
+      firebase.initializeApp(cfg);
     }
   } catch (e) {
     report.warn(
